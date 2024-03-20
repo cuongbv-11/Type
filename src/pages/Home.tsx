@@ -1,7 +1,7 @@
 import Banner from '@/components/Banner'
-import Footer from '@/components/Footer'
-import { Header } from '@/components/Header'
-import ProductList from '@/components/ProductList'
+import Footer from '@/components/Footer/Footer'
+import { Header } from '@/components/Header/Header'
+import ProductList from '@/components/ProductList/ProductList'
 
 type Props = {}
 const Home = (props: Props) => {
