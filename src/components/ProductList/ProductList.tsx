@@ -2,39 +2,14 @@ import React, { useEffect, useState } from 'react'
 import instance from '@/apis'
 import { TProduct } from '@/interfaces/TProduct'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-
-const ProductListWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Mỗi hàng chứa 3 ảnh */
-  grid-gap: 20px; /* Khoảng cách giữa các ảnh */
-`
-
-const ProductCard = styled.div`
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-`
-
-const ProductImage = styled.img`
-  display: block;
-  width: 100%;
-  height: auto;
-`
-
-const ProductTitle = styled.h2`
-  font-size: 20px;
-  margin-top: 10px;
-`
-
-const ProductPrice = styled.p`
-  font-weight: bold;
-  color: #007bff;
-`
-
-const ProductDescription = styled.p`
-  color: #666;
-`
+import {
+  ProductListWrapper,
+  ProductCard,
+  ProductImage,
+  ProductTitle,
+  ProductPrice,
+  ProductDescription
+} from './ProductList.styles'
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<TProduct[]>([])

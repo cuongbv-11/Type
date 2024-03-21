@@ -1,6 +1,13 @@
 .active {
   color: violet;
 }
+
 .navLink {
-  color: black;
+  color: #333;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.navLink:hover {
+  background-color: red;
 }
