@@ -1,48 +1,68 @@
+import React, { useEffect, useState } from 'react'
 import instance from '@/apis'
 import { TProduct } from '@/interfaces/TProduct'
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-const ProductList = () => {
-  // ! Dump component va smart component
+const ProductListWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Mỗi hàng chứa 3 ảnh */
+  grid-gap: 20px; /* Khoảng cách giữa các ảnh */
+`
+
+const ProductCard = styled.div`
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+`
+
+const ProductImage = styled.img`
+  display: block;
+  width: 100%;
+  height: auto;
+`
+
+const ProductTitle = styled.h2`
+  font-size: 20px;
+  margin-top: 10px;
+`
+
+const ProductPrice = styled.p`
+  font-weight: bold;
+  color: #007bff;
+`
+
+const ProductDescription = styled.p`
+  color: #666;
+`
+
+const ProductList: React.FC = () => {
   const [products, setProducts] = useState<TProduct[]>([])
+
   useEffect(() => {
-    // Cach 2:
     const getProducts = async () => {
-      try {
-        const { data } = await instance.get('/products')
-        console.log(data)
-        setProducts(data)
-      } catch (error) {
-        console.log(error)
-      }
+      const { data } = await instance.get('/products')
+      console.log(data)
+      setProducts(data)
     }
     getProducts()
-    // ! nâng cao.
-    return () => {
-      // ! Cleanup function
-    }
   }, [])
 
-  /**
-   * ! DependencyList
-   * ? TH1: Không có DependencyList - cứ có thay đổi thì render lại.
-   * ? TH2: [] - Empty Array - Chỉ chạy một lần khi componentDidMount
-   * ? TH3: [state1, state2,...] - Chạy lại khi 1 trong số các state được liệt kê có sự thay đổi.
-   */
-
-  // ! DependencyList = Danh sách phụ thuộc
   return (
-    <div>
-      <h1>Product List</h1>
+    <ProductListWrapper>
       {products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
-          <p>{product.price}</p>
-          <img width={350} src={product.thumbnail} alt={product.title} />
-        </div>
+        <ProductCard key={product.id}>
+          <Link to={`/product-card/${product.id}`}>
+            <ProductImage width={100} src={product.thumbnail} alt={product.title} />
+          </Link>
+          <Link to={`/product-infor/${product.id}`}>
+            <ProductTitle>{product.title}</ProductTitle>
+          </Link>
+          <ProductPrice>{product.price}</ProductPrice>
+          <ProductDescription>{product.description}</ProductDescription>
+        </ProductCard>
       ))}
-    </div>
+    </ProductListWrapper>
   )
 }
 
