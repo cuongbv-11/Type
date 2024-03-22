@@ -27,14 +27,20 @@ const ProductList: React.FC = () => {
     <ProductListWrapper>
       {products.map((product) => (
         <ProductCard key={product.id}>
-          <Link to={`/product-card/${product.id}`}>
+          <Link to={`/shop/${product.id}`}>
             <ProductImage width={100} src={product.thumbnail} alt={product.title} />
           </Link>
-          <Link to={`/product-infor/${product.id}`}>
-            <ProductTitle>{product.title}</ProductTitle>
+          <Link to={`/shop/${product.id}`}>
+            <ProductTitle>
+              <div>Tên:{product.title}</div>
+            </ProductTitle>
           </Link>
-          <ProductPrice>{product.price}</ProductPrice>
-          <ProductDescription>{product.description}</ProductDescription>
+          <ProductPrice>
+            <p>Giá:{product.price}</p>
+          </ProductPrice>
+          <ProductDescription>
+            <a>Mô tả:{product.description}</a>
+          </ProductDescription>
         </ProductCard>
       ))}
     </ProductListWrapper>

@@ -1,13 +1,23 @@
-.active {
-  color: violet;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #d027dc;
+}
+
+.navLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navLinks li {
+  margin-right: 40px;
 }
 
 .navLink {
-  color: #333;
+  color: white;
   text-decoration: none;
-  padding: 5px;
-}
-
-.navLink:hover {
-  background-color: red;
 }
