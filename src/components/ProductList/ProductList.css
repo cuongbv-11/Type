@@ -1,0 +1,31 @@
+.product-list-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.product-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.product-title {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.product-price {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.product-description {
+  color: #666;
+}
