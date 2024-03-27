@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center; /* Căn giữa theo chiều ngang */
   align-items: center; /* Căn giữa theo chiều dọc */
-  height: 100px; /* Chiều cao mẫu */
+  height: 50px; /* Chiều cao mẫu */
   background-color: #ca4a17; /* Màu nền mẫu */
 }
 

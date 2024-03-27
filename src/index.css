@@ -16,25 +16,30 @@ body {
   line-height: 1.6;
 }
 
+ol,
 ul,
-li,
-ol {
+li {
   list-style: none;
-}
-
-a {
-  text-decoration: none !important;
 }
 
 button {
   cursor: pointer;
   border: 1px solid transparent;
-  outline: none;
-  padding: 12px 24px;
   border-radius: 6px;
+  outline: none;
+  background-color: blue;
   transition: all 0.3s ease-in-out;
+  padding: 12px 24px;
 }
 
 button:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
+}
+
+a {
+  text-decoration: none;
+}
+
+table {
+  text-align: center;
 }
