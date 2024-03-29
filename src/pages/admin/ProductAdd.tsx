@@ -1,5 +1,6 @@
 import { TProduct } from '@/interfaces/TProduct'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { joiResolver } from '@hookform/resolvers/joi'
 
 type Props = {
   onAdd: (product: TProduct) => void
@@ -13,6 +14,7 @@ const ProductAdd = ({ onAdd }: Props) => {
   } = useForm<TProduct>()
   const onSubmit: SubmitHandler<TProduct> = (data) => {
     console.log(data)
+    onAdd(data)
   }
   return (
     <div className='container'>

@@ -29,3 +29,17 @@
 .product-description {
   color: #0a0a08;
 }
+.product-detail-container {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+}
+
+.product-detail-image {
+  width: 100%;
+}
+
+.product-detail-price {
+  font-size: 1.2em;
+  margin: 10px 0;
+}

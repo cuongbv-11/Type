@@ -3,13 +3,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #d027dc;
+  background-color: #e6751e;
 }
 
 .navLinks {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 5px;
   display: flex;
 }
 
@@ -20,4 +20,15 @@
 .navLink {
   color: white;
   text-decoration: none;
+}
+.navLink {
+  border: 1px solid #bd1e1e; /* Đổi màu và độ dày khung viền tại đây */
+  padding: 8px 12px; /* Điều chỉnh khoảng cách giữa nội dung và khung viền */
+  margin: 0 5px; /* Điều chỉnh khoảng cách giữa các liên kết */
+  border-radius: 5px; /* Làm tròn góc của khung viền */
+  color: #fff0f0; /* Đổi màu chữ tại đây */
+}
+
+.navLink:hover {
+  background-color: #2978cc; /* Tạo hiệu ứng nền khi rê chuột vào liên kết */
 }
