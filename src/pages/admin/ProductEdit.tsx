@@ -1,83 +1,86 @@
-import { TProduct } from '@/interfaces/TProduct'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { joiResolver } from '@hookform/resolvers/joi'
+import { useForm } from 'react-hook-form'
+import { TProduct } from '../../interfaces/TProduct'
 import Joi from 'joi'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { joiResolver } from '@hookform/resolvers/joi'
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getProduct } from '../../apis/product'
 
 type Props = {
-  onEdit: (productId: string, productData: TProduct) => void
-  existingProduct?: TProduct
+  onEdit: (product: TProduct) => void
 }
 
-const schemaProduct = Joi.object({
+const productSchema = Joi.object({
   title: Joi.string().required().min(3).max(255),
   price: Joi.number().required().min(0),
-  description: Joi.string().allow('')
+  description: Joi.string().allow(null, '')
 })
 
-const ProductEdit = ({ onEdit, existingProduct }: Props) => {
-  const { productId } = useParams<{ productId: string }>()
-  const navigate = useNavigate()
+const ProductEdit = ({ onEdit }: Props) => {
+  const { id } = useParams()
+  const [product, setProduct] = useState<TProduct | null>(null)
 
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<TProduct>({
-    resolver: joiResolver(schemaProduct),
-    defaultValues: existingProduct || {}
+    resolver: joiResolver(productSchema)
   })
-
-  const onSubmit: SubmitHandler<TProduct> = (data) => {
-    console.log(data)
-    if (productId) {
-      onEdit(productId, data)
-      navigate('/admin')
-    }
+  const onSubmit = (product: TProduct) => {
+    onEdit({ ...product, id })
   }
 
+  useEffect(() => {
+    ;(async () => {
+      const data = await getProduct(`/${id}`)
+      setProduct(data)
+    })()
+  }, [])
   return (
-    <div className='container'>
-      <h1>Edit Product</h1>
+    <div>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h1>Product Edit</h1>
         <div className='form-group'>
           <label htmlFor='title'>Title</label>
           <input
             type='text'
-            className='form-control'
             id='title'
-            placeholder='Title'
-            {...register('title', { required: true, minLength: 3, maxLength: 255 })}
+            className='form-control'
+            {...register('title', {
+              required: true,
+              minLength: 3,
+              maxLength: 255
+            })}
+            defaultValue={product?.title}
           />
-          {errors.title && <span className='text-danger'>{errors.title.message}</span>}
+          {errors.title && <div className='text-danger'>{errors.title.message}</div>}
         </div>
         <div className='form-group'>
           <label htmlFor='price'>Price</label>
           <input
             type='number'
-            className='form-control'
             id='price'
-            placeholder='Price'
-            {...register('price', { required: true, min: 0 })}
+            className='form-control'
+            {...register('price', {
+              required: true,
+              min: 0
+            })}
+            defaultValue={product?.price as number}
           />
-          {errors.price && <span className='text-danger'>{errors.price.message}</span>}
+          {errors.price && <div className='text-danger'>{errors.price.message}</div>}
         </div>
         <div className='form-group'>
           <label htmlFor='description'>Description</label>
           <input
             type='text'
-            className='form-control'
             id='description'
-            placeholder='Description'
+            className='form-control'
             {...register('description')}
+            defaultValue={product?.description}
           />
         </div>
-        <button type='submit' className='btn btn-primary'>
-          Sửa
-        </button>
-        <Link to='/admin' className='btn btn-secondary ml-2'>
-          Cancel
-        </Link>
+        <button className='btn btn-primary w-100'>Submit</button>
       </form>
     </div>
   )

@@ -13,7 +13,7 @@ import ProductEdit from './pages/admin/ProductEdit'
 import { useEffect, useState } from 'react'
 import { TProduct } from './interfaces/TProduct'
 import instance from './apis'
-import { createProduct, getProducts } from './apis/product'
+import { createProduct, getProducts, updateProduct, removeProduct } from './apis/product'
 
 function App() {
   const [products, setProducts] = useState<TProduct[]>([])
@@ -40,18 +40,22 @@ function App() {
       console.error('Error adding product: ', error)
     }
   }
-
-  const productId = 'someProductId'
-  const currentProduct: TProduct = products.find((product) => product.id === productId) || {
-    id: '',
-    title: '',
-    price: 0,
-    thumbnail: '',
-    description: ''
+  const handleEdit = (product: TProduct) => {
+    ;(async () => {
+      const p = await updateProduct(product)
+      setProducts(products.map((i) => (i.id === p.id ? p : i)))
+      navigate('/admin')
+    })()
   }
-
-  const handleEdit = (productId: string, productData: TProduct) => {}
-
+  const handleDelete = (id: number | undefined) => {
+    ;(async () => {
+      const isConfirm = window.confirm('Are you sure?')
+      if (isConfirm) {
+        await removeProduct(`${id}`)
+        setProducts(products.filter((i) => i.id !== id))
+      }
+    })()
+  }
   return (
     <>
       <Header />
@@ -66,12 +70,9 @@ function App() {
           </Route>
           {/* admin */}
           <Route path='/admin'>
-            <Route index element={<Dashboard products={products} />} />
+            <Route path='/admin' element={<Dashboard products={products} onDel={handleDelete} />} />
             <Route path='/admin/add' element={<ProductAdd onAdd={handleAdd} />} />
-            <Route
-              path='/admin/edit/:productId'
-              element={<ProductEdit onEdit={handleEdit} existingProduct={currentProduct} />}
-            />
+            <Route path='/admin/edit/:id' element={<ProductEdit onEdit={handleEdit} />} />
           </Route>
           {/* not found */}
           <Route path='*' element={<NotFound />} />
