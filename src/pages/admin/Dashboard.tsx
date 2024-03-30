@@ -8,7 +8,7 @@ type Props = {
 const Dashboard = ({ products }: Props) => {
   return (
     <div className='container'>
-      <h1>Chào đại ca </h1>
+      <h1>Chào đại ca</h1>
       <Link className='btn btn-primary' to='/admin/add'>
         Add new Product
       </Link>
@@ -34,7 +34,9 @@ const Dashboard = ({ products }: Props) => {
               </td>
               <td>{item.description}</td>
               <td>
-                <button className='btn btn-danger'>Update</button>
+                <Link to={`/admin/edit/${item.id}`} className='btn btn-danger'>
+                  Update
+                </Link>
                 <button className='btn btn-warning'>Delete</button>
               </td>
             </tr>

@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import ProductDetail from './pages/ProductDetail'
 import Dashboard from './pages/admin/Dashboard'
 import ProductAdd from './pages/admin/ProductAdd'
+import ProductEdit from './pages/admin/ProductEdit'
 import { useEffect, useState } from 'react'
 import { TProduct } from './interfaces/TProduct'
 import instance from './apis'
@@ -17,21 +18,40 @@ import { createProduct, getProducts } from './apis/product'
 function App() {
   const [products, setProducts] = useState<TProduct[]>([])
   const navigate = useNavigate()
+
   useEffect(() => {
-    ;(async () => {
-      const data = await getProducts()
-      setProducts(data)
-    })()
+    const fetchData = async () => {
+      try {
+        const data = await getProducts()
+        setProducts(data)
+      } catch (error) {
+        console.error('Error fetching products: ', error)
+      }
+    }
+    fetchData()
   }, [])
-  console.log(products)
-  const handleAdd = (product: TProduct) => {
-    ;(async () => {
+
+  const handleAdd = async (product: TProduct) => {
+    try {
       const data = await createProduct(product)
-      // setProducts((prev) => [...prev, data])
       setProducts([...products, data])
       navigate('/admin')
-    })()
+    } catch (error) {
+      console.error('Error adding product: ', error)
+    }
   }
+
+  const productId = 'someProductId'
+  const currentProduct: TProduct = products.find((product) => product.id === productId) || {
+    id: '',
+    title: '',
+    price: 0,
+    thumbnail: '',
+    description: ''
+  }
+
+  const handleEdit = (productId: string, productData: TProduct) => {}
+
   return (
     <>
       <Header />
@@ -48,12 +68,15 @@ function App() {
           <Route path='/admin'>
             <Route index element={<Dashboard products={products} />} />
             <Route path='/admin/add' element={<ProductAdd onAdd={handleAdd} />} />
+            <Route
+              path='/admin/edit/:productId'
+              element={<ProductEdit onEdit={handleEdit} existingProduct={currentProduct} />}
+            />
           </Route>
           {/* not found */}
           <Route path='*' element={<NotFound />} />
         </Routes>
       </main>
-
       <Footer />
     </>
   )

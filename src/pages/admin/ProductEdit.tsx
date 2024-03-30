@@ -2,9 +2,11 @@ import { TProduct } from '@/interfaces/TProduct'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import Joi from 'joi'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 type Props = {
-  onAdd: (product: TProduct) => void
+  onEdit: (productId: string, productData: TProduct) => void
+  existingProduct?: TProduct
 }
 
 const schemaProduct = Joi.object({
@@ -13,20 +15,30 @@ const schemaProduct = Joi.object({
   description: Joi.string().allow('')
 })
 
-const ProductAdd = ({ onAdd }: Props) => {
+const ProductEdit = ({ onEdit, existingProduct }: Props) => {
+  const { productId } = useParams<{ productId: string }>()
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<TProduct>({
-    resolver: joiResolver(schemaProduct)
+    resolver: joiResolver(schemaProduct),
+    defaultValues: existingProduct || {}
   })
+
   const onSubmit: SubmitHandler<TProduct> = (data) => {
     console.log(data)
-    onAdd(data)
+    if (productId) {
+      onEdit(productId, data)
+      navigate('/admin')
+    }
   }
+
   return (
     <div className='container'>
+      <h1>Edit Product</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='form-group'>
           <label htmlFor='title'>Title</label>
@@ -60,12 +72,15 @@ const ProductAdd = ({ onAdd }: Props) => {
             {...register('description')}
           />
         </div>
-        <button type='submit' className='btn btn-primary w-100'>
-          Submit
+        <button type='submit' className='btn btn-primary'>
+          Sửa
         </button>
+        <Link to='/admin' className='btn btn-secondary ml-2'>
+          Cancel
+        </Link>
       </form>
     </div>
   )
 }
 
-export default ProductAdd
+export default ProductEdit
