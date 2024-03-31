@@ -4,7 +4,19 @@
       "title": "iPhone 93",
       "price": 54911,
       "description": "An apple mobile which is nothing like appledsadad",
-      "id": 1
+      "id": 1,
+      "discountPercentage": 17.94,
+      "rating": 4.44,
+      "stock": 34,
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/2/1.jpg",
+        "https://cdn.dummyjson.com/product-images/2/2.jpg",
+        "https://cdn.dummyjson.com/product-images/2/3.jpg",
+        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+      ]
     },
     {
       "id": 2,
@@ -538,12 +550,6 @@
         "https://cdn.dummyjson.com/product-images/30/3.jpg",
         "https://cdn.dummyjson.com/product-images/30/thumbnail.jpg"
       ]
-    },
-    {
-      "title": "vccv",
-      "price": "200",
-      "description": "sadaads",
-      "id": 31
     }
   ],
   "carts": [
@@ -2887,6 +2893,36 @@
         "wallet": "0xb9fc1004bfe7702de522516cf34a5da41c4ef2b5",
         "network": "Ethereum (ERC20)"
       }
+    },
+    {
+      "email": "cuongbvph39353@fpt.edu.vn",
+      "password": "$2a$10$/kDp3eMhvJrdmUvDGcwNTedBb9/GZDwse2gzerI5yIhcs6geH6y7m",
+      "id": 31
+    },
+    {
+      "email": "vc13050904@gmail.com",
+      "password": "$2a$10$nP/h0XJNnVy9pfp9V4anQecb/fhzV0Hb4v0uTaIGe3Sv51UKdAZom",
+      "id": 32
+    },
+    {
+      "email": "vc111@gmail.com",
+      "password": "$2a$10$rAdcyAPoscDfThhGBK0qNOUheL9Xu2KvPlrRDGHnslaercLSAmwzK",
+      "id": 33
+    },
+    {
+      "email": "4@gmail.com",
+      "password": "$2a$10$v4qG4jnEniGwuB5IgWEX4u4nBciSn.NxsPB5TWG7Snw8WRgsbEJJG",
+      "id": 34
+    },
+    {
+      "email": "45@gmail.com",
+      "password": "$2a$10$k7BWow.aaKzBgX66HgVTNOHDzU0DkUxLiF3PW4FoOEmbJd7XfkMdW",
+      "id": 35
+    },
+    {
+      "email": "cuong121@gmail.com",
+      "password": "$2a$10$lMkgD12VZc6ClZaaptXtHOA5L52G6cluFfr47v1hFxVWClWTVg5Ly",
+      "id": 36
     }
   ]
 }

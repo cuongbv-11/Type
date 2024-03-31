@@ -16,19 +16,13 @@ import instance from './apis'
 import { createProduct, getProducts, updateProduct, removeProduct } from './apis/product'
 
 function App() {
-  const [products, setProducts] = useState<TProduct[]>([])
   const navigate = useNavigate()
-
+  const [products, setProducts] = useState<TProduct[]>([])
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getProducts()
-        setProducts(data)
-      } catch (error) {
-        console.error('Error fetching products: ', error)
-      }
-    }
-    fetchData()
+    ;(async () => {
+      const data = await getProducts()
+      setProducts(data)
+    })()
   }, [])
 
   const handleAdd = async (product: TProduct) => {
@@ -49,7 +43,7 @@ function App() {
   }
   const handleDelete = (id: number | undefined) => {
     ;(async () => {
-      const isConfirm = window.confirm('Are you sure?')
+      const isConfirm = window.confirm('Suy nghĩ kỹ trước khi ấn ok')
       if (isConfirm) {
         await removeProduct(`${id}`)
         setProducts(products.filter((i) => i.id !== id))
