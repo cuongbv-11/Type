@@ -3,29 +3,31 @@ import style from './Header.module.css'
 
 export const Header = () => {
   return (
-    <div className={style.container}>
-      <ul className={style.navLinks}>
-        <li>
-          <NavLink to='/' className={style.navLink}>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' className={style.navLink}>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/register' className={style.navLink}>
-            Register
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/admin' className={style.navLink}>
-            Admin Page
-          </NavLink>
-        </li>
-      </ul>
-    </div>
+    <header className={style.header}>
+      <nav className={style.navLinks}>
+        <ul>
+          <li>
+            <NavLink to='/' className={style.navLink}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/login' className={style.navLink}>
+              Login
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/register' className={style.navLink}>
+              Register
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/admin' className={style.navLink}>
+              Admin Page
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
   )
 }

@@ -26,7 +26,7 @@ const Login = () => {
       console.log(data)
       if (data.accessToken) {
         localStorage.setItem('accessToken', data.accessToken)
-        window.confirm('dang ky thanh cong, ban co muon dang nhap') && navigate('/admin')
+        window.confirm('dang nhap thanh cong') && navigate('/admin')
       }
     })()
   }
@@ -51,7 +51,7 @@ const Login = () => {
         </div>
         <div className='form-group'></div>
         <button type='submit' className='btn btn-primary w-100'>
-          Submit
+          Login
         </button>
       </form>
     </div>

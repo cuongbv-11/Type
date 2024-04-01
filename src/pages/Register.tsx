@@ -8,7 +8,8 @@ import { useNavigate } from 'react-router-dom'
 
 const userSchema = Joi.object({
   email: Joi.string().email({ tlds: false }).required(),
-  password: Joi.string().required().min(6)
+  password: Joi.string().required().min(6),
+  confirmPassword: Joi.string().required().valid(Joi.ref('password'))
 })
 
 const Register = () => {
@@ -48,9 +49,19 @@ const Register = () => {
           />
           {errors.password && <span className='text-danger'>{errors.password.message}</span>}
         </div>
+        <div className='form-group'>
+          <label htmlFor='confirmPassword'>Confirm Password</label>
+          <input
+            type='password'
+            className='form-control'
+            id='confirmPassword'
+            {...register('confirmPassword', { required: true })}
+          />
+          {errors.confirmPassword && <span className='text-danger'>{errors.confirmPassword.message}</span>}
+        </div>
         <div className='form-group'></div>
         <button type='submit' className='btn btn-primary w-100'>
-          Submit
+          Register
         </button>
       </form>
     </div>

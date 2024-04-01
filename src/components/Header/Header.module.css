@@ -1,34 +1,41 @@
-.container {
+.header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #e6751e;
+  background-image: url('logo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 200px;
 }
 
-.navLinks {
-  list-style: none;
-  margin: 0;
-  padding: 5px;
+.navLinks ul {
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .navLinks li {
-  margin-right: 40px;
+  margin-left: 20px; /* Tăng khoảng cách giữa các mục danh sách */
 }
 
 .navLink {
-  color: white;
   text-decoration: none;
-}
-.navLink {
-  border: 1px solid #bd1e1e; /* Đổi màu và độ dày khung viền tại đây */
-  padding: 8px 12px; /* Điều chỉnh khoảng cách giữa nội dung và khung viền */
-  margin: 0 5px; /* Điều chỉnh khoảng cách giữa các liên kết */
-  border-radius: 5px; /* Làm tròn góc của khung viền */
-  color: #fff0f0; /* Đổi màu chữ tại đây */
+  color: #adb723;
+  padding: 10px 20px; /* Tăng khoảng cách giữa các mục danh sách */
+  border-radius: 20px; /* Làm tròn các góc */
+  font-size: 16px; /* Giảm kích thước chữ */
+  transition: background-color 0.3s, color 0.3s; /* Tạo hiệu ứng chuyển đổi màu nền và màu chữ */
 }
 
 .navLink:hover {
-  background-color: #2978cc; /* Tạo hiệu ứng nền khi rê chuột vào liên kết */
+  background-color: #ffc107; /* Màu nền khi hover */
+  color: #ececec; /* Màu chữ khi hover */
+}
+
+.navLink:active {
+  background-color: #ff9800; /* Màu nền khi active */
+  color: #fff; /* Màu chữ khi active */
 }

@@ -22,6 +22,7 @@ const Dashboard = ({ products, onDel }: Props) => {
             <th>#</th>
             <th>Title</th>
             <th>Price</th>
+            <th>thumbnail</th>
             <th>Description</th>
             <th>Action</th>
           </tr>

@@ -47,9 +47,7 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/3/1.jpg"
-      ]
+      "images": ["https://cdn.dummyjson.com/product-images/3/1.jpg"]
     },
     {
       "id": 4,
@@ -2903,26 +2901,6 @@
       "email": "vc13050904@gmail.com",
       "password": "$2a$10$nP/h0XJNnVy9pfp9V4anQecb/fhzV0Hb4v0uTaIGe3Sv51UKdAZom",
       "id": 32
-    },
-    {
-      "email": "vc111@gmail.com",
-      "password": "$2a$10$rAdcyAPoscDfThhGBK0qNOUheL9Xu2KvPlrRDGHnslaercLSAmwzK",
-      "id": 33
-    },
-    {
-      "email": "4@gmail.com",
-      "password": "$2a$10$v4qG4jnEniGwuB5IgWEX4u4nBciSn.NxsPB5TWG7Snw8WRgsbEJJG",
-      "id": 34
-    },
-    {
-      "email": "45@gmail.com",
-      "password": "$2a$10$k7BWow.aaKzBgX66HgVTNOHDzU0DkUxLiF3PW4FoOEmbJd7XfkMdW",
-      "id": 35
-    },
-    {
-      "email": "cuong121@gmail.com",
-      "password": "$2a$10$lMkgD12VZc6ClZaaptXtHOA5L52G6cluFfr47v1hFxVWClWTVg5Ly",
-      "id": 36
     }
   ]
 }
