@@ -1,15 +1,10 @@
 {
   "products": [
     {
-      "title": "iPhone 93",
-      "price": 54911,
-      "description": "An apple mobile which is nothing like appledsadad",
+      "title": "iPhone 931",
+      "price": 549111,
+      "description": "An apple mobile which is nothing like appledsadad1",
       "id": 1,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
       "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
       "images": [
         "https://cdn.dummyjson.com/product-images/2/1.jpg",
