@@ -42,7 +42,9 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
-      "images": ["https://cdn.dummyjson.com/product-images/3/1.jpg"]
+      "images": [
+        "https://cdn.dummyjson.com/product-images/3/1.jpg"
+      ]
     },
     {
       "id": 4,
@@ -2888,14 +2890,25 @@
       }
     },
     {
+      "email": "213@gmgdg.com",
+      "password": "$2a$10$CcsaTxnsxzKF4M7q2Zb6T.GqE0R.AKP0CcRrfoWltFXiXbGJWebtO",
+      "confirmPassword": "112211",
+      "role": "admin",
+      "id": 35
+    },
+    {
       "email": "cuongbvph39353@fpt.edu.vn",
-      "password": "$2a$10$/kDp3eMhvJrdmUvDGcwNTedBb9/GZDwse2gzerI5yIhcs6geH6y7m",
-      "id": 31
+      "password": "$2a$10$zVjqoRZQhzLMNrG67WjRcehxJr0THPG6yCFlPTjBDmIxJJn.yLfXW",
+      "confirmPassword": "112211",
+      "role": "admin",
+      "id": 36
     },
     {
       "email": "vc13050904@gmail.com",
-      "password": "$2a$10$nP/h0XJNnVy9pfp9V4anQecb/fhzV0Hb4v0uTaIGe3Sv51UKdAZom",
-      "id": 32
+      "password": "$2a$10$nMro/jloAmLMSSvKwcw1p.qKYDQwB22IynYMz9KrjKl.QFtIAByPe",
+      "confirmPassword": "112211",
+      "role": "member",
+      "id": 37
     }
   ]
 }

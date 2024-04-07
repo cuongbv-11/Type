@@ -20,16 +20,25 @@ const Login = () => {
   } = useForm<TUser>({
     resolver: joiResolver(userSchema)
   })
-  const onSubmit = (user: TUser) => {
-    ;(async () => {
+
+  const onSubmit = async (user: TUser) => {
+    try {
       const { data } = await instance.post('/login', user)
       console.log(data)
       if (data.accessToken) {
         localStorage.setItem('accessToken', data.accessToken)
-        window.confirm('dang nhap thanh cong') && navigate('/admin')
+        const userRole = data.role
+        if (userRole === 'admin') {
+          navigate('/admin') // Chuyển hướng đến trang admin
+        } else {
+          navigate('/') // Chuyển hướng đến trang chính
+        }
       }
-    })()
+    } catch (error) {
+      console.error('Error logging in: ', error)
+    }
   }
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>

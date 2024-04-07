@@ -23,7 +23,10 @@ const Register = () => {
   })
   const onSubmit = (user: TUser) => {
     ;(async () => {
-      const { data } = await instance.post('/register', user)
+      const { data } = await instance.post('/register', {
+        ...user,
+        role: 'member'
+      })
       console.log(data)
       if (data.accessToken) {
         window.confirm('dang ky thanh cong, ban co muon dang nhap') && navigate('/login')
